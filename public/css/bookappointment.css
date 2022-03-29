@@ -1,0 +1,582 @@
+body * {
+    margin: 2px;
+    padding: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0px;
+    display: flex;
+    min-height: 100vh;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+    background-color: #d9e4f5;
+    background-image: linear-gradient(315deg, #d9e4f5 0%, #f5e3e6 74%);
+    width: 100%;
+    overflow: auto;
+}
+
+.container {
+    margin: auto;
+    min-width: fit-content;
+}
+
+.inline {
+    /* min-width: max-content; */
+    margin: 8px;
+    display: flex;
+    /* align-items: baseline; */
+    align-items: center;
+    justify-content: center;
+}
+
+.side-image-svg {
+    width: 55%;
+    /* right: 0; */
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.side-image-svg img {
+    width: 50%;
+    /* right: 0; */
+    /* display: flex; */
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.appointment-form {
+    /* min-width: max-content; */
+    /* margin: auto; */
+    /* max-width: 90vw; */
+    min-width: 640px;
+    width: 640px;
+    max-height: 95vh;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(247, 246, 255);
+    /* background-image: url("../images/appoint-form-background-3.png"); */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    border-radius: 8px;
+    overflow-y: auto;
+}
+
+.appointment-form::-webkit-scrollbar-track {
+    box-shadow: inset 0px 0px 8px 0px rgba(134, 183, 254, 0.3);
+    -webkit-box-shadow: inset 0px 0px 8px 0px rgba(134, 183, 254, 0.3);
+	background-color: rgb(247, 246, 255);
+	border-radius: 0 8px 8px 0;
+}
+
+.appointment-form::-webkit-scrollbar {
+    width: 10px;
+    border-radius: 0 8px 8px 0;
+    background-color: rgb(245, 245, 245);
+}
+
+.appointment-form::-webkit-scrollbar-thumb {
+	border-radius: 0 8px 8px 0;
+	background-color: rgba(134, 183, 254);
+    background-image: linear-gradient(315deg, 
+        rgb(153, 194, 255) 0%, 
+        rgb(170, 203, 252) 100%);
+}
+
+.hide {
+    display: none;
+}
+
+.heading {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.background-shadow {
+    border: 0;
+    box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
+    -ms-box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
+}
+
+/* Input [START] */
+
+.required {
+    color: rgb(217, 48, 37);
+}
+
+.input {
+    padding: 0 4px;
+    min-width: min-content;
+    position: relative;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-label {
+    min-width: max-content;
+    position: absolute;
+    left: 6px;
+    top: 14.5px;
+    padding: 0 6px;
+    /* border-radius: 16px; */
+    font-size: 14.5px;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.3);
+    cursor: text;
+    transition: top 200ms ease-in,
+        left 200ms ease-in,
+        font-size 200ms ease-in;
+}
+
+.form-field {
+    top: 0;
+    left: 0;
+    min-width: fit-content;
+    width: 100%;
+    height: 45px;
+    /* border: none; */
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 4.8px;
+    font-family: inherit;
+    color: black;
+    outline: none;
+    padding: 10px;
+    background: none;
+    transition: border-color .15s ease-in-out,
+        box-shadow .15s ease-in-out;
+}
+
+.form-field:hover {
+    /* border-color: lightgreen; */
+}
+
+.form-field:focus {
+    /* border-color: cyan; */
+    background-color: rgb(247, 246, 255);
+    border-color: rgb(134, 183, 254);
+    box-shadow: 0 0 0 0.25rem rgb(134, 183, 254, 0.4);
+}
+
+.form-field:focus ~ .form-label,
+.form-field:not(:placeholder-shown).form-field:not(:focus) ~ .form-label {
+    left: 12px;
+    top: -6px;
+    font-size: 9.6px;
+    /* border: 0.01px solid rgb(12, 201, 201); */
+    background-color: rgb(247, 246, 255);
+    color: rgb(134, 183, 254);
+    cursor: default;
+}
+
+.form-area + .form-label {
+    min-width: max-content;
+    position: absolute;
+    left: 4px;
+    top: 8px;
+    padding: 0 8px;
+    /* border-radius: 16px; */
+    font-size: 14.5px;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.3);
+    cursor: text;
+    transition: top 200ms ease-in,
+        left 200ms ease-in,
+        font-size 200ms ease-in;
+}
+
+.form-area {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 6px;
+    font-family: inherit;
+    color: black;
+    outline: none;
+    padding: 10px;
+    background: none;
+    resize: none;
+    cursor: text;
+    transition: border-color .15s ease-in-out,
+        box-shadow .15s ease-in-out;
+}
+
+.form-area:hover {
+    /* border-color: lightgreen; */
+}
+
+.form-area:focus {
+    /* border-color: cyan; */
+    background-color: rgb(247, 246, 255);
+    border-color: rgb(134, 183, 254);
+    box-shadow: 0 0 0 0.25rem rgb(134, 183, 254, 0.4);
+}
+
+.form-area::-webkit-scrollbar-track {
+    /* box-shadow: inset 0 0 6px rgba(59, 183, 143,0.3);;
+    -webkit-box-shadow: inset 0 0 6px rgba(59, 183, 143,0.3);
+	background-color: rgb(245, 245, 245);
+	border-radius: 4.8px; */
+    box-shadow: inset 0px 0px 6px 0px rgba(134, 183, 254, 0.3);
+    -webkit-box-shadow: inset 0px 0px 6px 0px rgba(134, 183, 254, 0.3);
+	background-color: rgb(247, 246, 255);
+	border-radius: 0 6px 6px 0;
+}
+
+.form-area::-webkit-scrollbar {
+    width: 8px;
+    border-radius: 0 6px 6px 0;
+    background-color: rgb(245, 245, 245);
+}
+
+.form-area::-webkit-scrollbar-thumb {
+	border-radius: 0 6px 6px 0;
+	background-color: rgba(134, 183, 254);
+    background-image: linear-gradient(315deg, 
+        rgb(153, 194, 255) 0%, 
+        rgb(170, 203, 252) 100%);
+}
+
+.form-area:focus ~ .form-label,
+.form-area:not(:placeholder-shown).form-area:not(:focus) ~ .form-label {
+    left: 12px;
+    top: -6px;
+    font-size: 9.6px;
+    /* border: 0.01px solid rgb(12, 201, 201); */
+    background-color: rgb(247, 246, 255);
+    color: rgb(134, 183, 254);
+    cursor: default;
+}
+
+/* Input [END] */
+
+.disable-select {
+    user-select: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+/*Select List [START]*/
+
+.select-box {
+    position: relative;
+    display: flex;
+    min-width: max-content;
+    width: 100%;
+    flex-direction: column;
+}
+
+.select-box .selected {
+    width: 100%;
+    padding: 12px 16px;
+    background: rgb(247, 246, 255);
+    border-radius: 6px;
+    color: rgb(47, 54, 64);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: space-between;
+
+    order: 0;
+}
+
+.select-box .selected svg {
+    margin-right: -4.8px;
+    width: 16px;
+    transition: all 0.4s;
+}
+
+.select-box .options-container {
+    color: rgb(47, 54, 64);
+    background: rgb(247, 246, 255);
+    max-height: 0;
+    width: 100%;
+    opacity: 0;
+    margin-top: 60px;
+    border: 1px solid rgb(153, 194, 255);
+    transition: all 0.4s;
+    border-radius: 6px;
+    overflow: hidden;
+
+    order: 1;
+
+    z-index: 101;
+    position: absolute;
+}
+
+.select-box .options-container.active {
+    max-height: 240px;
+    opacity: 1;
+    overflow: auto;
+}
+
+.select-box .options-container.active + .selected svg {
+    transform: rotate(-180deg);
+}
+
+/* .select-box .options-container::-webkit-scrollbar {
+    width: 8px;
+    background: rgb(13, 20, 31);
+    border-radius: 0 6px 6px 0;
+}
+
+.select-box .options-container::-webkit-scrollbar-thumb {
+    background: rgb(82, 88, 97);
+    border-radius: 0 6px 6px 0;
+} */
+
+.select-box .options-container::-webkit-scrollbar-track {
+    box-shadow: inset 0px 0px 6px 0px rgba(134, 183, 254, 0.3);
+    -webkit-box-shadow: inset 0px 0px 6px 0px rgba(134, 183, 254, 0.3);
+	background-color: rgb(247, 246, 255);
+	border-radius: 0 6px 6px 0;
+}
+
+.select-box .options-container::-webkit-scrollbar {
+    width: 8px;
+    border-radius: 0 6px 6px 0;
+    background-color: rgb(245, 245, 245);
+}
+
+.select-box .options-container::-webkit-scrollbar-thumb {
+	border-radius: 0 6px 6px 0;
+	background-color: rgba(134, 183, 254);
+    background-image: linear-gradient(315deg, 
+        rgb(153, 194, 255) 0%, 
+        rgb(170, 203, 252) 100%);
+}
+
+.select-box .option,
+.selected {
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+.select-box .option:hover {
+    font-weight: bold;
+    color: rgb(247, 246, 255);
+    border-radius: 6px;
+    background: rgb(153, 194, 255);
+}
+
+.select-box label {
+    display: flex;
+    cursor: pointer;
+}
+
+.select-box label svg {
+    width: 16px;
+    margin-right: 16px;
+}
+
+.select-box .option .radio {
+    display: none;
+}
+
+.select-box .search-box input {
+    margin: auto;
+    margin-top: 7px;
+    position: absolute;
+    width: 100%;
+    padding: 8px 16px;
+    border-radius: 6px;
+    z-index: 100;
+    border: 12px solid rgb(153, 194, 255);
+    background: rgb(247, 246, 255);
+
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s;
+}
+
+.select-box .search-box input:focus {
+    outline: none;
+}
+
+.select-box .options-container.active ~ .search-box input {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/*Select List [END]*/
+
+.button {
+    margin: auto;
+    min-width: max-content;
+    width: 100%;
+    height: 50px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.select-button {
+    /* margin: 20px; */
+    width: 50%;
+    height: 50px;
+    display: flex;
+    font-family: inherit;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    color: white;
+    /* background: rgba(0, 191, 166, 0.9); */
+    background: rgba(134, 183, 254, 0.9);
+    border-style: solid;
+    border-width: 2px 2px 2px 2px;
+    border-color: rgba(255, 255, 255, 0.333);
+    border-radius: 24px;
+    padding: 16px 24px 16px 28px;
+    overflow: hidden;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+    transform: translate(0px, 0px) rotate(0deg);
+    box-shadow: -4px -2px 16px 0px #ffffff, 4px 2px 16px 0px rgb(95 157 231 / 48%);
+}
+
+.select-button:hover {
+    /* background: rgba(0, 191, 166, 0.7); */
+    background: rgba(134, 183, 254, 0.8);
+    box-shadow: -2px -1px 8px 0px #ffffff, 2px 1px 8px 0px rgb(95 157 231 / 48%);
+}
+
+.select-button:active {
+    /* background: rgba(0, 191, 166); */
+    background: rgb(134, 183, 254);
+    box-shadow: none;
+}
+
+.bottom-margin {
+    height: 5px;
+}
+
+@media screen and (max-width: 1000px) {
+
+    * {
+        margin: 0;
+    }
+
+    .container {
+        margin: auto;
+        margin-top: 20px;
+        width: 90%;
+        min-width: fit-content;
+        max-width: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .side-image-svg {
+        max-width: fit-content;
+        width: 100%;
+        margin-bottom: 27px;
+        /* display: none; */
+    }
+    
+    .side-image-svg img {
+        width: 50%;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        /* display: none; */
+    }
+    
+    .appointment-form * {
+        margin: 0 2px;
+    }
+
+    .appointment-form {
+        min-width: max-content;
+        width: 100%;
+        margin: auto;
+        align-items: center;
+        justify-content: center;
+        max-height: 93vh;
+    }
+
+    .heading {
+        margin: 15px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .inline {
+        margin: auto;
+        display: initial;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .input * {
+        margin: 2px;
+    }
+    
+    .input {
+        margin: auto;
+        margin-top: 16px;
+        display: flex;
+        padding: 0 4px;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .form-label {
+        font-size: 15px;
+    }
+    
+    .form-area {
+        height: 200px;
+    }
+    
+    .select-box {
+        margin: auto;
+        margin-top: 16px;
+        position: relative;
+        display: flex;
+        min-width: max-content;
+        padding: 0 4px;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .select-box .search-box input {
+        margin: auto;
+        margin-top: 7px;
+        left: 0;
+    }
+    
+    .button {
+        display: flex;
+        margin-top: 16px;
+    }
+    
+    .select-button {
+        width: 100%;
+    }
+    
+    .bottom-margin {
+        height: 20px;
+    }
+}

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Appoitment Form</title>
+    <link rel="stylesheet" href="/css/bookappointment.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="inline">
+            <div class="side-image-svg">
+                <img src="/img/doctor side image svg.svg">
+            </div>
+            <div class="appointment-form background-shadow">
+                <form id="appointment-form-main">
+                    <div class=inline>
+                        <h1 class="heading"><u>Appointment Form</u></h1>
+                    </div>
+                    <div id="patient-info">
+                        <div class="inline">
+                            <h2 class="heading"><u>Patient's Info</u></h2>
+                        </div>
+                        <div class="inline">
+                            <div class=input>
+                                <input type="text" autocomplete="off" placeholder=" " class="form-field"
+                                    name="first-name" id="first-name" required>
+                                <label for="first-name" class="form-label disable-select">Patient's First Name<span
+                                        class="required">*</span></label>
+                            </div>
+                            <div class="input">
+                                <input type="text" autocomplete="off" placeholder=" " class="form-field"
+                                    name="last-name" id="last-name" required>
+                                <label for="last-name" class="form-label disable-select">Patient's Last Name<span
+                                        class="required">*</span></label>
+                            </div>
+                        </div>
+                        <div class="inline">
+                            <div class="input">
+                                <input type="tel"
+                                    oninput="this.value = this.value.replace(/[^+0-9]/g, '').replace(/(\..*)\./g, '$1');"
+                                    minlength="10" maxlength="13" autocomplete="off" placeholder=" " class="form-field"
+                                    name="patient-mobile" id="patient-mobile">
+                                <label for="patient-mobile" class="form-label disable-select">Patient's Mobile
+                                    No.</label>
+                            </div>
+                            <div class="input">
+                                <input type="text" onfocus="this.type = 'date'"
+                                    onblur="if(this.value === '')this.type = 'text'" autocomplete="off" placeholder=" "
+                                    class="form-field" name="patient-dob" id="patient-dob" required>
+                                <label for="patient-dob" class="form-label disable-select">Patient's DOB<span
+                                        class="required">*</span></label>
+                            </div>
+                            <div class="input">
+                                <input type="text" autocomplete="off" placeholder=" " class="form-field"
+                                    name="patient-age" id="patient-age" required readonly>
+                                <label for="patient-age" class="form-label disable-select">Patient's Age<span
+                                        class="required">*</span></label>
+                            </div>
+                        </div>
+                        <div class="inline">
+                            <div class="input">
+                                <input type="email" autocomplete="off" placeholder=" " class="form-field"
+                                    name="patient-email" id="patient-email"
+                                    pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" required>
+                                <label for="patient-email" class="form-label disable-select">E-Mail<span
+                                        class="required">*</span></label>
+                            </div>
+                            <div class="select-box disable-select">
+                                <div class="options-container">
+                                    <div class="option">
+                                        <input type="radio" class="radio" name="sex" id="male">
+                                        <label for="male">
+                                            <svg viewBox="0 0 512 512">
+                                                <circle cx="216" cy="296" r="152" fill="none" stroke="currentColor"
+                                                    stroke-linecap="round" stroke-linejoin="round" stroke-width="32" />
+                                                <path fill="none" stroke="currentColor" stroke-linecap="round"
+                                                    stroke-linejoin="round" stroke-width="32"
+                                                    d="M448 160V64h-96M324 188L448 64" />
+                                            </svg>
+                                            <p>Male</p>
+                                        </label>
+                                    </div>
+                                    <div class="option">
+                                        <input type="radio" class="radio" name="sex" id="female">
+                                        <label for="female">
+                                            <svg viewBox="0 0 512 512">
+                                                <circle cx="256" cy="184" r="152" fill="none" stroke="currentColor"
+                                                    stroke-linecap="round" stroke-linejoin="round" stroke-width="32" />
+                                                <path fill="none" stroke="currentColor" stroke-linecap="round"
+                                                    stroke-linejoin="round" stroke-width="32"
+                                                    d="M256 336v144M314 416H198" />
+                                            </svg>
+                                            <p>Female</p>
+                                        </label>
+                                    </div>
+                                    <div class="option">
+                                        <input type="radio" class="radio" name="sex" id="others">
+                                        <label for="others">
+                                            <svg viewBox="0 0 512 512">
+                                                <circle cx="216" cy="200" r="136" fill="none" stroke="currentColor"
+                                                    stroke-linecap="round" stroke-linejoin="round" stroke-width="32" />
+                                                <path fill="none" stroke="currentColor" stroke-linecap="round"
+                                                    stroke-linejoin="round" stroke-width="32"
+                                                    d="M216 352v128M272 416H160M432 112V32h-80M335.28 128.72L432 32" />
+                                            </svg>
+                                            <P>Other</P>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="selected">
+                                    <p class="selected-current" id="patient-sex">Patient's Sex<span
+                                            class="required">*</span></p>
+                                    <svg viewBox="0 0 512 512" id="arrow-icon">
+                                        <path fill="none" stroke="currentColor" stroke-linecap="round"
+                                            stroke-linejoin="round" stroke-width="48" d="M112 184l144 144 144-144" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="inline">
+                            <div class="select-box disable-select">
+                                <div class="options-container" id="state-options" data-index="0">
+                                    <!-- All States of India -->
+                                </div>
+                                <div class="selected">
+                                    <p class="selected-current" id="patient-state">State<span class="required">*</span>
+                                    </p>
+                                    <svg viewBox="0 0 512 512">
+                                        <path fill="none" stroke="currentColor" stroke-linecap="round"
+                                            stroke-linejoin="round" stroke-width="48" d="M112 184l144 144 144-144" />
+                                    </svg>
+                                </div>
+                                <div class="search-box">
+                                    <input type="text" Placeholder="Search...">
+                                </div>
+                            </div>
+                            <div class="select-box disable-select">
+                                <div class="options-container" id="city-options" data-index="0">
+                                    <!-- All Cities with respect to States -->
+                                </div>
+                                <div class="selected">
+                                    <p class="selected-current" id="patient-city">City<span class="required">*</span>
+                                    </p>
+                                    <svg viewBox="0 0 512 512">
+                                        <path fill="none" stroke="currentColor" stroke-linecap="round"
+                                            stroke-linejoin="round" stroke-width="48" d="M112 184l144 144 144-144" />
+                                    </svg>
+                                </div>
+                                <div class="search-box">
+                                    <input type="text" Placeholder="Search...">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="inline">
+                            <div class="input">
+                                <textarea autocomplete="off" placeholder=" " class="form-area" name="appointment-reason"
+                                    id="appointment-reason"></textarea>
+                                <label for="appointment-reason" class="form-label disable-select">Appointment
+                                    Reason</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="doctor-info" class="hide">
+                        <div class="inline">
+                            <h2 class="heading"><u>Doctor's Info</u></h2>
+                        </div>
+                        <div class="inline">
+                            <div class="input">
+                                <input type="text" autocomplete="off" placeholder=" " class="form-field"
+                                    name="doctor-name" id="doctor-name" required readonly>
+                                <label for="doctor-name" class="form-label disable-select">Doctor's Name<span
+                                        class="required">*</span></label>
+                            </div>
+                            <div class="input">
+                                <input type="text" autocomplete="off" placeholder=" " class="form-field"
+                                    name="doctor-specialization" id="doctor-specialization" required readonly>
+                                <label for="doctor-specialization" class="form-label disable-select">Doctor's
+                                    Specialization<span class="required">*</span></label>
+                            </div>
+                        </div>
+                        <div class="inline">
+                            <div class="input">
+                                <input type="text" onfocus="this.type = 'date'"
+                                    onblur="if(this.value === '')this.type = 'text'" autocomplete="off" placeholder=" "
+                                    class="form-field" name="appointment-date" id="appointment-date">
+                                <label for="appointment-date" class="form-label disable-select">Appointment Date<span
+                                        class="required">*</span></label>
+                            </div>
+                            <div class="input">
+                                <input type="text" onfocus="this.type = 'time'"
+                                    onblur="if(this.value === '')this.type = 'text'" autocomplete="off" placeholder=" "
+                                    class="form-field" name="appointment-time" id="appointment-time">
+                                <label for="appointment-time" class="form-label disable-select">Appointment Time<span
+                                        class="required">*</span></label>
+                            </div>
+                        </div>
+                        <div class="inline">
+                            <div class="input">
+                                <input type="text" autocomplete="off" placeholder=" " class="form-field"
+                                    name="appointment-loc-state" id="appointment-loc-state" required readonly>
+                                <label for="appointment-loc-state" class="form-label disable-select">Appointment State
+                                    or Union Territorie<span class="required">*</span></label>
+                            </div>
+                            <div class="input">
+                                <input type="text" autocomplete="off" placeholder=" " class="form-field"
+                                    name="appointment-loc-city" id="appointment-loc-city" required readonly>
+                                <label for="appointment-loc-city" class="form-label disable-select">Appointment
+                                    City<span class="required">*</span></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="inline">
+                        <div class="button disable-select">
+                            <button type="button" class="select-button" id="fill-prev-btn">
+                                <span class="button-text">Auto Fill</span>
+                            </button>
+                        </div>
+                        <div class="button disable-select">
+                            <button type="submit" class="select-button" id="sub-next-btn">
+                                <span class="button-text">Next</span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="bottom-margin"></div>
+    </div>
+
+    <script src="/js/cities.js"></script>
+    <script src="/js/multi_page_form.js"></script>
+    <script src="/js/bookappointment.js"></script>
+    <script>
+        function show() {
+            alert("To Be Implimated")
+        }
+    </script>
+</body>
+
+</html>

@@ -4,7 +4,6 @@ const path = require('path');
 const hbs = require('hbs');
 const userRoutes = require('./routes/userRoutes');
 const doctorlist = require('./data/doctorlist');
-const cors = require('cors');
 
 const port = 3000;
 const app = express();
@@ -12,9 +11,7 @@ connectDB();
 app.use(express.json())
 
 app.use('/api/users', userRoutes);
-app.use(cors({
-    origin: "*",
-}))
+
 
 // public folder path
 app.use(express.static(path.join(__dirname, '../public')))
@@ -53,11 +50,19 @@ app.get('/help', (req, res) => {
 })
 
 app.get('/about', (req, res) => {
-    res.render('about')
+    res.render('aboutus')
 })
 
 app.get('/userprofile', (req, res) => {
     res.render('userprofile')
+})
+
+app.get('/bookappointment', (req, res) => {
+    res.render('bookappointment')
+})
+
+app.get('/faq', (req, res) => {
+    res.render('faq')
 })
 
 app.get('*', (req, res) => {
