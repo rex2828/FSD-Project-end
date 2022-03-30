@@ -8,7 +8,7 @@ const doctorlist = require('./data/doctorlist');
 const port = 3000;
 const app = express();
 connectDB();
-app.use(express.json())
+app.use(express.json());
 
 app.use('/api/users', userRoutes);
 
@@ -57,12 +57,22 @@ app.get('/userprofile', (req, res) => {
     res.render('userprofile')
 })
 
+app.get('/doctorprofile', (req, res) => {
+    res.render('doctorprofile')
+})
+
+
+
 app.get('/bookappointment', (req, res) => {
     res.render('bookappointment')
 })
 
 app.get('/faq', (req, res) => {
     res.render('faq')
+})
+
+app.get('/admin', (req, res) => {
+    res.render('admin')
 })
 
 app.get('*', (req, res) => {

@@ -158,9 +158,6 @@ body {
         box-shadow .15s ease-in-out;
 }
 
-.form-field:hover {
-    /* border-color: lightgreen; */
-}
 
 .form-field:focus {
     /* border-color: cyan; */
@@ -214,9 +211,6 @@ body {
         box-shadow .15s ease-in-out;
 }
 
-.form-area:hover {
-    /* border-color: lightgreen; */
-}
 
 .form-area:focus {
     /* border-color: cyan; */
