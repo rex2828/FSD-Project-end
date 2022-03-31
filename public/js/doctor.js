@@ -31,6 +31,7 @@ fetchRes.then(res =>
             doctorCardContainer.append(card);
             return { name: doctor.name, edu: doctor.edu, category: doctor.category, location: doctor.location.split(",")[0], element: card }
         });
+        totalRecords.innerHTML = `<b>${doctors.length}</b>`
     })
 
 
@@ -96,10 +97,8 @@ sortSelector.addEventListener('change', () => {
 
 
 locationSelector.addEventListener('change', () => {
-
     doctors.forEach((doctor) => {
         doctor.element.classList.remove('hide');
-
         if (doctor.location != locationSelector.value) {
             doctor.element.classList.add('hide');
         }
@@ -108,7 +107,3 @@ locationSelector.addEventListener('change', () => {
         }
     })
 })
-
-
-
-

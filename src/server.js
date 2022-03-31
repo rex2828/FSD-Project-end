@@ -61,8 +61,6 @@ app.get('/doctorprofile', (req, res) => {
     res.render('doctorprofile')
 })
 
-
-
 app.get('/bookappointment', (req, res) => {
     res.render('bookappointment')
 })

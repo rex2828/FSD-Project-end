@@ -19,24 +19,20 @@
                 <div class="card search-form">
                     <div class="card-body p-0">
                         <form id="search-form">
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="row header-search">
-                                        <div class="col-lg-3 col-md-3 col-sm-12 p-0 location-options">
-                                            <select class="form-control" id="location-selector">
-                                                <option>Select Location</option>
-                                                <option value="Bengaluru">Bengaluru</option>
-                                                <option value="Mumbai">Mumbai</option>
-                                                <option value="Delhi">Delhi</option>
-                                                <option value="Kolkata">Kolkata</option>
-                                                <option value="Chennai">Chennai</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-lg-8 col-md-6 col-sm-12 p-0 search-bar">
-                                            <input type="text" placeholder="Search..." class="form-control" id="search"
-                                                name="search">
-                                        </div>
-                                    </div>
+                            <div class="row header-search">
+                                <div class="col-lg-3 col-md-3 col-sm-12 p-0 location-options">
+                                    <select class="form-control" id="location-selector">
+                                        <option>Select Location</option>
+                                        <option value="Bengaluru">Bengaluru</option>
+                                        <option value="Mumbai">Mumbai</option>
+                                        <option value="Delhi">Delhi</option>
+                                        <option value="Kolkata">Kolkata</option>
+                                        <option value="Chennai">Chennai</option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-9 col-md-6 col-sm-12 p-0 search-bar">
+                                    <input type="text" placeholder="Search..." class="form-control" id="search"
+                                        name="search">
                                 </div>
                             </div>
                         </form>
@@ -54,9 +50,8 @@
                                     <div class="result-header">
                                         <div class="row">
                                             <div class="col-lg-6">
-                                                <div class="records">Showing: <span
-                                                        id="current-records"><b>1-4</b></span> of
-                                                    <span id="total-records"><b>4</b></span> result
+                                                <div class="records">Showing:
+                                                    <span id="total-records"><b></b></span> results
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
@@ -127,7 +122,7 @@
                                                                 </div>
                                                             </td>
                                                             <td>
-                                                                <button class="btn-primary"
+                                                                <button class="btn-success"
                                                                     onclick="location.href = '/bookappointment';">Book
                                                                     Appointment</button>
                                                             </td>
@@ -152,9 +147,7 @@
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
     <script src="/js/doctor.js"></script>
-    <script>
-        AOS.init();
-    </script>
+
 </body>
 
 </html>

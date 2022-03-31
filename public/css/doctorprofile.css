@@ -1,21 +1,13 @@
-body
-{
-    margin-top:20px;
+.doctorprofile-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
     color: #1a202c;
     text-align: left;
-    background-color: #e2e8f0;  
-    /* margin-top:20px; */
+    background-color: #BFFFF0;
 }
 
-.doctorprofile-container{
-    margin-top: 120px;
-}
-
-.main-breadcrumb
-{
-    margin-left: 60px;
-    margin-right: 50px;
-}
 .icon-box.medium {
     font-size: 20px;
     width: 50px;
@@ -136,4 +128,23 @@ p {
 {
     box-shadow: none!important;
 }
-
+.nameAddress
+{
+    color: #ff721a;
+}
+h3{
+    margin-left: 30px;
+}
+.description
+{
+    color: #ff721a;
+    font-size: large;
+}
+.experience
+{
+    font-size: medium;
+}
+.education
+{
+    font-size: medium;
+}

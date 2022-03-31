@@ -1,21 +1,20 @@
-body{
+body
+{
     margin-top:20px;
-    color: #1a202c;
     text-align: left;
-    background-color: #fff;    
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
 }
-.main-body {
+.main-body
+{
     margin-top: 150px;
     padding: 15px;
 }
-.card {
+.card
+{
     box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
 }
-.contenteditable
+.card
 {
-    color: red;;
-}
-.card {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -38,6 +37,47 @@ body{
     margin-left: 20px;
     display:inline-block;
 }
+/* #edit
+{
+    color: blue;
+    text-align: left;
+    width: auto;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: 10px;
+} */
+#editProfile
+{
+    background-color: #0f59ee;
+    padding: 16px 30px;
+    text-align: center;
+    font-size: 14px;
+    color: #fff;
+    margin-bottom: 10px;
+    -o-transition: all 0.4s ease-in-out;
+    -webkit-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+    text-transform: uppercase;
+    background-size: 200% auto;
+    border-radius: 10px;
+    word-spacing: 3px;
+}
+#saveProfile
+{
+    background-color: #0f59ee;
+    padding: 16px 30px;
+    text-align: center;
+    font-size: 14px;
+    color: #fff;
+    margin-bottom: 10px;
+    -o-transition: all 0.4s ease-in-out;
+    -webkit-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+    text-transform: uppercase;
+    background-size: 200% auto;
+    border-radius: 10px;
+    word-spacing: 3px;
+}
 #file
 {
     display: none;
@@ -47,7 +87,6 @@ body{
     margin-right: -8px;
     margin-left: -8px;
 }
-
 .gutters-sm>.col, .gutters-sm>[class*=col-]
 {
     padding-right: 8px;
@@ -70,7 +109,49 @@ body{
 {
     font-style: normal;
 }
+
 .shadow-none
 {
     box-shadow: none!important;
+}
+
+.userProfileMain
+{
+    background-color:#97DBAE;
+}
+
+.photoColumn
+{
+    height: 300px;
+    border: 5px solid #bffff0;
+    background-color: #BFFFF0
+}
+
+.dataColumn
+{
+    background-color: #BFFFF0;
+    padding-top: 8px;
+}
+
+.rowProfileColumn
+{
+    color:#219F94
+}
+#photo
+{
+    border-style: solid;
+    border-color: #030303;
+    border-radius: 50%;
+    padding: 5px;
+    width: 200px;
+    height: 200px;
+}
+  
+#img:hover
+{
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+.appointmentHistory
+{
+    color: #219F94;
 }

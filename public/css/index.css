@@ -285,14 +285,12 @@ h1 {
 }
 
 .feature_part .single_feature_part {
-  -webkit-transition: 1s;
-  transition: 1s;
   position: relative;
   box-shadow: rgba(99, 77, 154, 0.16) 0px 3px 6px, rgba(99, 77, 154, 0.23) 0px 3px 6px;
   padding: 10px;
   border-radius: 20px;
   background-color: rgb(227, 222, 236);
-  background-image: url(../img/wavy-pattern.png);
+  background-image: url(/img/wavy-pattern.png);
   background-repeat: no-repeat;
   background-size: 100% 100%;
   background-position: center;
