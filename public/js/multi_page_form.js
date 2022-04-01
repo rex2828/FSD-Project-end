@@ -9,7 +9,7 @@ const patient_city_select = patient_info.querySelector("#patient-city").innerHTM
 const default_border = "1px solid rgba(0, 0, 0, 0.3)";
 const error_border = "2px solid red";
 
-fill_prev_btn.addEventListener("click", function(e) {
+fill_prev_btn.addEventListener("click", function (e) {
     if (!patient_info.classList.contains("hide") & doctor_info.classList.contains("hide")) {
         alert("To Be Implemented")
     }
@@ -46,13 +46,13 @@ fill_prev_btn.addEventListener("click", function(e) {
     }
 });
 
-sub_next_btn.addEventListener("click", function(e) {
+sub_next_btn.addEventListener("click", function (e) {
     if (!patient_info.classList.contains("hide") & !doctor_info.classList.contains("hide")) {
         e.preventDefault()
-        alert("To Be Implementd")
+        window.location.replace('/payment')
     }
     else if (patient_info.classList.contains("hide") & !doctor_info.classList.contains("hide")) {
-        if(document.getElementById("appointment-form-main").checkValidity()) {
+        if (document.getElementById("appointment-form-main").checkValidity()) {
             e.preventDefault()
             patient_info.classList.remove("hide")
             doctor_info.classList.remove("hide")
@@ -73,7 +73,7 @@ sub_next_btn.addEventListener("click", function(e) {
         }
     }
     else if (doctor_info.classList.contains("hide")) {
-        if(document.getElementById("appointment-form-main").checkValidity()) {
+        if (document.getElementById("appointment-form-main").checkValidity()) {
             e.preventDefault()
             if (patient_info.querySelector("#patient-sex").innerHTML == patient_sex_select) {
                 patient_info.querySelector("#patient-sex").parentElement.style.border = error_border

@@ -73,6 +73,14 @@ app.get('/admin', (req, res) => {
     res.render('admin')
 })
 
+app.get('/payment', (req, res) => {
+    res.render('payment')
+})
+
+app.get('/contactus', (req, res) => {
+    res.render('contactus')
+})
+
 app.get('*', (req, res) => {
     res.render('404page', {
         title: '404 Page',
