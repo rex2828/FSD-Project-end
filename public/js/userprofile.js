@@ -1,3 +1,9 @@
+JSON.parse(localStorage.getItem('user-info'));
+if (userInfo === null) {
+    window.location.replace('/login');
+}
+
+
 const fullname = document.getElementById('fullname');
 const email = document.getElementById('email');
 const username = document.getElementById('username');
