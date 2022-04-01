@@ -3,7 +3,6 @@ if (userInfo === null) {
     window.location.replace('/login');
 }
 
-
 let selected_all = document.querySelectorAll(".selected")
 
 let today = new Date()
@@ -81,6 +80,8 @@ function filter_list(search_term, options_list = null) {
         })
     }
 }
+
+console.log(selected_all)
 
 selected_all.forEach(selected => {
     let options_container = selected.previousElementSibling;

@@ -3,7 +3,9 @@ const connectDB = require('./config/db');
 const path = require('path');
 const hbs = require('hbs');
 const userRoutes = require('./routes/userRoutes');
-const doctorlist = require('./data/doctorlist');
+const doctorRoutes = require('./routes/doctorRoutes');
+const contactRoutes = require('./routes/contactRoutes');
+const doctorlist = require('./data/doctors');
 
 const port = 3000;
 const app = express();
@@ -11,6 +13,8 @@ connectDB();
 app.use(express.json());
 
 app.use('/api/users', userRoutes);
+app.use('/api/doctors', doctorRoutes);
+app.use('/api', contactRoutes);
 
 
 // public folder path
@@ -24,6 +28,7 @@ hbs.registerPartials(path.join(__dirname, '../templates/partials'));
 
 // doctor api
 app.get('/api/doctorlist', (req, res) => {
+
     res.json(doctorlist);
 })
 

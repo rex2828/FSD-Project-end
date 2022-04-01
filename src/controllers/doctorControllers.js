@@ -8,7 +8,7 @@ const registerDoctor = asyncHandler(async (req, res) => {
     const doctorExists = await Doctor.findOne({ email });
     if (doctorExists) {
         res.status(400);
-        throw new Error('User already exists');
+        throw new Error('Doctor already exists');
     }
     const doctor = await Doctor.create({
         name, category, language, fee, edu, exp, email, password, mobile, clinicaddress, pic, appointments
@@ -16,7 +16,7 @@ const registerDoctor = asyncHandler(async (req, res) => {
 
     if (doctor) {
         res.status(201).send({
-            _id: user._id,
+            _id: doctor._id,
             name: doctor.name,
             category: doctor.category,
             lang: doctor.language,
@@ -43,7 +43,7 @@ const authDoctor = asyncHandler(async (req, res) => {
     if (doctor && (await doctor.matchPassword(password))) {
         res.json({
             status: 'success',
-            _id: user._id,
+            _id: doctor._id,
             name: doctor.name,
             category: doctor.category,
             lang: doctor.language,
@@ -66,6 +66,6 @@ const authDoctor = asyncHandler(async (req, res) => {
 
 })
 
-module.exports = { registerUser, authUser };
+module.exports = { registerDoctor, authDoctor };
 
 

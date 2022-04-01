@@ -1,4 +1,4 @@
-const doctorlist = [
+const doctors = [
     {
         pp: "https://bootdey.com/img/Content/avatar/avatar5.png",
         name: "Dr. Ashwani Mathur",
@@ -37,4 +37,4 @@ const doctorlist = [
     }
 ];
 
-module.exports = doctorlist;
+module.exports = doctors;
