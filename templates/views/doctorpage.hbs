@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Appointments</title>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="/css/doctorpage.css" />
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body>
+    {{>header}}
+    <section class="grid" id="appointment-container">
+        <template id="appointment-template">
+            <div class="card patient active">
+                <div class="content">
+                    <div class="post main">
+                        <div class="preview"></div>
+                        <div class="counter"></div>
+                        <div class="detail"></div>
+                        <div class="detail"></div>
+                        <div class="details"></div>
+                        <div class="details"></div>
+                    </div>
+                    <div class="post sec">
+                        <div class="preview"></div>
+                        <div class="counter"></div>
+                        <div class="detail"></div>
+                    </div>
+                    <div class="post sec">
+                        <div class="preview"></div>
+                        <div class="counter"></div>
+                        <div class="detail"></div>
+                    </div>
+                    <div class="post ter">
+                        <div class="preview"></div>
+                        <div class="counter"></div>
+                        <div class="detail"></div>
+                    </div>
+                    <div class="post ter">
+                        <div class="preview"></div>
+                        <div class="counter"></div>
+                        <div class="detail"></div>
+                    </div>
+                    <div class="post ter">
+                        <div class="preview"></div>
+                        <div class="counter"></div>
+                        <div class="detail"></div>
+                    </div>
+                    <div class="post ter">
+                        <div class="preview"></div>
+                        <div class="counter"></div>
+                        <div class="detail"></div>
+                    </div>
+                    <div class="post ter">
+                        <div class="preview"></div>
+                        <div class="counter"></div>
+                        <div class="detail"></div>
+                    </div>
+                    <div class="post ter">
+                        <div class="preview"></div>
+                        <div class="counter"></div>
+                        <div class="detail"></div>
+                    </div>
+                </div>
+                <div class="fabs">
+                    <div class="fab"></div>
+                    <i class="avatar zmdi zmdi-account"></i>
+                </div>
+                <div class="user">
+                    <div class="name user-name">
+                        Aryan Verma
+                    </div>
+
+                    <div class="profiles">
+                        <div class="profile">
+                            <span>Age</span>
+                            <p class="user-age">-</p>
+                        </div>
+                        <div class="profile">
+                            <span>Sex</span>
+                            <p class="user-gender">-</p>
+                        </div>
+                        <div class="profile">
+                            <span>Date</span>
+                            <p class="user-state">-</p>
+                        </div>
+                        <div class="profile">
+                            <span>Time</span>
+                            <p class="user-city">-</p>
+                        </div>
+                    </div>
+                    <div class="button">
+                        <button class="delete appointment-delete-btn">
+                            <div class="tooltip">Delete Appointment</div>
+                            <ion-icon name="trash-outline"></ion-icon>
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+        </template>
+    </section>
+    {{>footer}}
+    <script src="/js/doctorpage.js"></script>
+</body>
+
+</html>

@@ -1,8 +1,3 @@
-const userInfo = JSON.parse(localStorage.getItem('user-info'));
-if (userInfo !== null) {
-    window.location.replace('/');
-}
-
 const registerBtn = document.getElementById('registerBtn');
 const fname = document.getElementById('fname');
 const lname = document.getElementById('lname');
@@ -17,7 +12,6 @@ function validateEmail() {
     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.value)) {
         return true;
     }
-
     return false;
 }
 
@@ -113,7 +107,7 @@ fname.addEventListener('input', () => {
 })
 
 
-registerBtn.addEventListener('click', (e) => {
+registerBtn.addEventListener('click', async (e) => {
 
     let gender_value = null;
     let inputElements = document.getElementsByClassName('form-check-input');
@@ -124,10 +118,8 @@ registerBtn.addEventListener('click', (e) => {
         }
     }
 
-
-
     if (validateEmail() && validateFname() && validateLname() && validatePassword() && validateUsername() && gender_value && confirmpassword.value === password.value) {
-        let data = {
+        let obj = {
             name: fname.value + ' ' + lname.value,
             username: username.value,
             gender: gender_value,
@@ -135,19 +127,19 @@ registerBtn.addEventListener('click', (e) => {
             password: password.value,
         }
 
-        fetch("/api/users", {
+        const res = await fetch("/api/users/register", {
             method: "POST",
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-        }).then(res => res.json())
-            .then(data => {
-                if (data) {
-                    localStorage.setItem('user-info', JSON.stringify(data));
-                    window.location.replace('/');
-                }
-            });
+            body: JSON.stringify(obj)
+        });
+        const data = await res.json();
+        console.log(data);
+        if (data.user) {
+            alert('Please verify your email address.')
+        } else {
+            alert('try again');
+        }
     } else {
-
         alert('invalid data!');
     }
 })

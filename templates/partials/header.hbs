@@ -35,7 +35,6 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <!--aos animate script-->
-
 </head>
 
 <body>
@@ -45,7 +44,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-12" data-aos="fade-down" data-aos-duration="1300">
                     <nav class="navbar navbar-expand-lg navbar-light">
-                        <a href="/" class="navbar-brand">
+                        <a href="/" class="navbar-brand" id="brand">
                             <img src="/img/logo.png" alt="logo">
                         </a>
 
@@ -70,19 +69,41 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="/about">About</a>
                                 </li>
+
+                                {{#if user.isAdmin}}
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/faq">FAQ</a>
+                                    <a class="nav-link" id="adm" href="/admin">Admin</a>
                                 </li>
+                                {{/if}}
+
+                                {{#if user}}
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/contactus">Contact</a>
+                                    <a class="nav-link" href="/userprofile">Profile</a>
+                                </li>&emsp;&emsp;
+
+                                <li>
+                                    <a class="btn_2 d-lg-block ms-auto mt-3 mx-2" id="logout-btn"
+                                        href="/api/users/logout">Logout</a>
                                 </li>
+                                {{else}}
                                 <li>
                                     <a class="btn_2 d-lg-block ms-auto mt-3 mx-2" id="login-register-btn"
                                         href="/login">Login/Register</a>
                                 </li>
+                                {{/if}}
+
+                                {{#if user.isDoctor}}
                                 <li>
-                                    <a class="btn_2 d-lg-block ms-auto mt-3" id="logout-btn" href="/login">Logout</a>
+                                    <a class="btn_2 d-lg-block ms-auto mt-3 mx-2" id="logout-btn"
+                                        href="/doctorpage?id={{user.doctorId}}">Doctor
+                                    </a>
                                 </li>
+                                {{else}}
+                                <li>
+                                    <a class="btn_2 d-lg-block ms-auto mt-3 mx-2" id="logout-btn"
+                                        href="/doctorapplication">Apply</a>
+                                </li>
+                                {{/if}}
                             </ul>
                         </div>
                     </nav>
@@ -94,7 +115,6 @@
     <script>
         AOS.init();
     </script>
-    <script src="/js/header.js"></script>
 </body>
 
 </html>

@@ -9,10 +9,13 @@ const totalRecords = document.getElementById('total-records');
 
 let doctors = [];
 
-let fetchRes = fetch("/api/doctorlist");
+let fetchRes = fetch("/api/doctors/getdoctors");
 fetchRes.then(res =>
     res.json()).then(d => {
-        doctors = d.map(doctor => {
+        let approvedDoctors = d.filter((doctor) => {
+            return doctor.approved === true
+        })
+        doctors = approvedDoctors.map(doctor => {
             const card = doctorCardTemplate.content.cloneNode(true).children[0];
             const name = card.querySelector("#doctor-name");
             const edu = card.querySelector("#doctor-edu");
@@ -21,15 +24,18 @@ fetchRes.then(res =>
             const category = card.querySelector("#doctor-category");
             const rating = card.querySelector("#doctor-rating");
             const img = card.querySelector("#doctor-img");
-            img.setAttribute("src", doctor.pp);
+            const btn = card.querySelector('#bookappointmentBtn');
+            btn.setAttribute("onclick", `location.href = '/bookappointment?id=${doctor._id}';`);
+            img.setAttribute("src", doctor.pic);
             name.textContent = doctor.name;
+            name.setAttribute("href", `/doctorprofile?id=${doctor._id}`);
             edu.textContent = doctor.edu;
-            location.textContent = doctor.location;
+            location.textContent = doctor.clinicaddress;
             fee.textContent = doctor.fee;
             category.textContent = doctor.category;
             rating.textContent = doctor.rating;
             doctorCardContainer.append(card);
-            return { name: doctor.name, edu: doctor.edu, category: doctor.category, location: doctor.location.split(",")[0], element: card }
+            return { name: doctor.name, edu: doctor.edu, category: doctor.category, location: doctor.clinicaddress.split(",")[0], element: card }
         });
         totalRecords.innerHTML = `<b>${doctors.length}</b>`
     })
@@ -42,27 +48,6 @@ searchInput.addEventListener('input', (e) => {
         doctor.element.classList.toggle('hide', !isVisible);
     })
 })
-
-
-// doctors = data.map(doctor => {
-//     const card = doctorCardTemplate.content.cloneNode(true).children[0];
-//     const name = card.querySelector("#doctor-name");
-//     const edu = card.querySelector("#doctor-edu");
-//     const location = card.querySelector("#doctor-location");
-//     const fee = card.querySelector("#doctor-fee");
-//     const category = card.querySelector("#doctor-category");
-//     const rating = card.querySelector("#doctor-rating");
-//     const img = card.querySelector("#doctor-img");
-//     img.setAttribute("src", doctor.pp);
-//     name.textContent = doctor.name;
-//     edu.textContent = doctor.edu;
-//     location.textContent = doctor.location;
-//     fee.textContent = doctor.fee;
-//     category.textContent = doctor.category;
-//     rating.textContent = doctor.rating;
-//     doctorCardContainer.append(card);
-//     return { name: doctor.name, edu: doctor.edu, category: doctor.category, location: doctor.location.split(",")[0], element: card }
-// })
 
 function sortTableByColumn(table, column, asc = true) {
     const dirModifier = asc ? 1 : -1;

@@ -70,7 +70,7 @@
                                         class="required">*</span></label>
                             </div>
                             <div class="select-box disable-select">
-                                <div class="options-container">
+                                <div class="options-container" id="gender-options">
                                     <div class="option">
                                         <input type="radio" class="radio" name="sex" id="male">
                                         <label for="male">
@@ -171,13 +171,14 @@
                         <div class="inline">
                             <div class="input">
                                 <input type="text" autocomplete="off" placeholder=" " class="form-field"
-                                    name="doctor-name" id="doctor-name" required readonly>
+                                    name="doctor-name" id="doctor-name" required readonly value="{{{name}}}">
                                 <label for="doctor-name" class="form-label disable-select">Doctor's Name<span
                                         class="required">*</span></label>
                             </div>
                             <div class="input">
                                 <input type="text" autocomplete="off" placeholder=" " class="form-field"
-                                    name="doctor-specialization" id="doctor-specialization" required readonly>
+                                    name="doctor-specialization" id="doctor-specialization" required readonly
+                                    value="{{{category}}}">
                                 <label for="doctor-specialization" class="form-label disable-select">Doctor's
                                     Specialization<span class="required">*</span></label>
                             </div>
@@ -201,13 +202,15 @@
                         <div class="inline">
                             <div class="input">
                                 <input type="text" autocomplete="off" placeholder="" class="form-field"
-                                    name="appointment-loc-state" id="appointment-loc-state" required readonly>
+                                    name="appointment-loc-state" id="appointment-loc-state" required readonly
+                                    value="{{{state}}}">
                                 <label for="appointment-loc-state" class="form-label disable-select">Appointment State
                                     or Union Territorie<span class="required">*</span></label>
                             </div>
                             <div class="input">
                                 <input type="text" autocomplete="off" placeholder=" " class="form-field"
-                                    name="appointment-loc-city" id="appointment-loc-city" required readonly>
+                                    name="appointment-loc-city" id="appointment-loc-city" required readonly
+                                    value="{{{city}}}">
                                 <label for="appointment-loc-city" class="form-label disable-select">Appointment
                                     City<span class="required">*</span></label>
                             </div>

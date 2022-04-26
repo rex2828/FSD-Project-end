@@ -1,8 +1,3 @@
-const userInfo = JSON.parse(localStorage.getItem('user-info'));
-if (userInfo === null) {
-    window.location.replace('/login');
-}
-
 let selected_all = document.querySelectorAll(".selected")
 
 let today = new Date()
@@ -81,7 +76,6 @@ function filter_list(search_term, options_list = null) {
     }
 }
 
-console.log(selected_all)
 
 selected_all.forEach(selected => {
     let options_container = selected.previousElementSibling;
@@ -107,10 +101,10 @@ selected_all.forEach(selected => {
             options_container.classList.add("active")
         }
 
-        options_list = options_container.querySelectorAll(".option")
+        options_list = options_container.querySelectorAll(".option");
         options_list.forEach(o => {
             o.addEventListener("click", () => {
-                selected_current.innerHTML = o.querySelector("label p").innerHTML
+                selected_current.innerHTML = o.querySelector("label p").innerHTML;
                 data_index = o.querySelector("label p").getAttribute("data-index")
                 options_container.setAttribute("data-index", data_index)
                 options_container.classList.remove("active")

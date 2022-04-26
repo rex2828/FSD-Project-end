@@ -122,9 +122,12 @@ body
 
 .photoColumn
 {
-    height: 300px;
     border: 5px solid #bffff0;
-    background-color: #BFFFF0
+    background-color: #BFFFF0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .dataColumn
@@ -143,8 +146,6 @@ body
     border-color: #030303;
     border-radius: 50%;
     padding: 5px;
-    width: 200px;
-    height: 200px;
 }
   
 #img:hover
@@ -154,4 +155,28 @@ body
 .appointmentHistory
 {
     color: #219F94;
+}
+
+#avatar-uploadbtn-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+#uploadbtn{
+    font-size: 2.5rem;
+    border-radius: 10px;
+}
+
+.profile-pic-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#image-input{
+    position: relative;
+    left: 20%;
 }

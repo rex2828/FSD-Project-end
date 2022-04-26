@@ -81,6 +81,7 @@ h1 {
   -webkit-transition-timing-function: ease-out;
   transition-timing-function: ease-out;
 }
+
 .navbar-nav a:hover:before,
 .navbar-nav a:focus:before,
 .navbar-nav a:active:before {
@@ -161,7 +162,7 @@ h1 {
 }
 
 .hidden {
-  visibility:hidden; 
+  visibility: hidden;
 }
 
 .btn_2:hover,
@@ -173,12 +174,10 @@ h1 {
 
 .btn_1,
 .btn_2 {
-  background-image: -webkit-linear-gradient(
-    to right,
-    #649bff,
-    #0070fa,
-    #649bff
-  );
+  background-image: -webkit-linear-gradient(to right,
+      #649bff,
+      #0070fa,
+      #649bff);
   background-image: -o-linear-gradient(to right, #649bff, #0070fa, #649bff);
   background-image: linear-gradient(to right, #649bff, #0070fa, #649bff);
 }
@@ -568,6 +567,21 @@ h1 {
   margin-bottom: 15px;
 }
 
+.faq {
+  padding-top: 10px;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+}
+
+.faq .nav-link {
+  color: #242429;
+  font-size: 17px;
+  font-family: "Playfair Display", serif;
+  line-height: 13px;
+  text-transform: capitalize;
+}
+
 .footer-info i {
   position: absolute;
   left: 0;
@@ -731,7 +745,7 @@ footer .space {
   }
 
   .main_menu .navbar {
-    padding: 15px 0;
+    padding: 10px 0;
   }
 
   .banner_part {
@@ -793,7 +807,6 @@ footer .space {
   }
 
   .btn_2 {
-    width: 211.9px;
     height: 53px;
   }
 

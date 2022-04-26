@@ -1,34 +1,33 @@
 const asyncHandler = require('express-async-handler');
 const { default: mongoose } = require('mongoose');
 const Doctor = require('../models/doctorModel');
-const generateToken = require('../utils/generateTokens');
-
+const User = require('../models/userModel');
+const appointmentModel = require('../models/appointmentModel')
 const registerDoctor = asyncHandler(async (req, res) => {
-    const { name, category, language, fee, edu, exp, email, password, mobile, clinicaddress, pic, appointments } = req.body;
+    const { name, category, languages, fee, edu, experience, email, mobile, clinicaddress, rating, pic } = req.body;
     const doctorExists = await Doctor.findOne({ email });
     if (doctorExists) {
         res.status(400);
         throw new Error('Doctor already exists');
     }
+    const user = req.user._id
     const doctor = await Doctor.create({
-        name, category, language, fee, edu, exp, email, password, mobile, clinicaddress, pic, appointments
+        name, user, category, languages, fee, edu, experience, email, mobile, clinicaddress, rating, pic
     });
-
     if (doctor) {
         res.status(201).send({
             _id: doctor._id,
             name: doctor.name,
             category: doctor.category,
-            lang: doctor.language,
+            lang: doctor.languages,
             fee: doctor.fee,
             edu: doctor.edu,
-            exp: doctor.exp,
+            experience: doctor.experience,
             email: doctor.email,
             mobile: doctor.mobile,
             caddress: doctor.clinicaddress,
+            rating: doctor.rating,
             pic: doctor.pic,
-            token: generateToken(doctor._id),
-            appointments: doctor.appointments
         })
     } else {
         res.status(400)
@@ -37,35 +36,45 @@ const registerDoctor = asyncHandler(async (req, res) => {
 
 })
 
-const authDoctor = asyncHandler(async (req, res) => {
-    const { email, password } = req.body;
-    const doctor = await Doctor.findOne({ email })
-    if (doctor && (await doctor.matchPassword(password))) {
-        res.json({
-            status: 'success',
-            _id: doctor._id,
-            name: doctor.name,
-            category: doctor.category,
-            lang: doctor.language,
-            fee: doctor.fee,
-            edu: doctor.edu,
-            exp: doctor.exp,
-            email: doctor.email,
-            mobile: doctor.mobile,
-            clinicaddress: doctor.clinicaddress,
-            pic: doctor.pic,
-            token: generateToken(doctor._id),
-            appointments: doctor.appointments
-        })
-    }
-    else {
-        res.status(400).json({ status: 'failed', msg: 'Invalid email or Password' });
-        throw new Error('Invalid email or Password');
-    }
 
-
+const getDoctors = asyncHandler(async (req, res) => {
+    const doctors = await Doctor.find({});
+    if (doctors) {
+        res.status(201).send(doctors);
+    } else {
+        res.status(400)
+        throw new Error('Cannot get doctors');
+    }
 })
 
-module.exports = { registerDoctor, authDoctor };
+const approveDoctor = asyncHandler(async (req, res) => {
+    const doctorid = req.query.id
+    const doctor = await Doctor.findByIdAndUpdate(doctorid, { approved: true }).populate('user');
+    const userid = doctor.user._id
+    await User.findByIdAndUpdate(userid, { isDoctor: true, doctorId: doctorid });
+    res.status(200).redirect('/verified?m1=Doctor Approved&m2= ')
+})
+
+const deleteDoctor = asyncHandler(async (req, res) => {
+    const doctorid = req.query.id
+    const doctor = await Doctor.findByIdAndDelete(doctorid).populate('user');
+    const userid = doctor.user._id
+    await User.findByIdAndUpdate(userid, { isDoctor: false, doctorId: null })
+    if (doctor) {
+        res.status(200).redirect('/verified?m1=Doctor Deleted&m2= ')
+    }
+})
+
+const doctorappointments = asyncHandler(async (req, res) => {
+    const appointments = await appointmentModel.find({ doctor: req.user.doctorId }).populate('user');
+    if (appointments) {
+        res.send(appointments)
+    }
+    else {
+        throw new Error('can not fetch appointments');
+    }
+})
+
+module.exports = { registerDoctor, getDoctors, approveDoctor, deleteDoctor, doctorappointments };
 
 

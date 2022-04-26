@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
 
 const doctorSchema = mongoose.Schema(
     {
@@ -7,14 +6,17 @@ const doctorSchema = mongoose.Schema(
             type: String,
             required: true,
         },
+        user: {
+            type: mongoose.Schema.Types.ObjectId,
+            required: true,
+            unique: true,
+            ref: 'User'
+        },
         category: {
             type: String,
             required: true
         },
-        language: {
-            type: String,
-            required: true,
-        },
+        languages: [],
         fee: {
             type: Number,
             required: true,
@@ -29,52 +31,37 @@ const doctorSchema = mongoose.Schema(
             unique: true,
             max: 50,
         },
+        approved: {
+            type: Boolean,
+            default: false
+        },
         experience: {
             type: Number
         },
-        password: {
-            type: String,
-            required: true,
-            min: 8,
-        },
         mobile: {
             type: String,
+            unique: true,
             min: 10,
             max: 10,
             required: true,
         },
-        clinic_address: {
+        clinicaddress: {
             type: String,
+        },
+        rating: {
+            type: Number,
+            default: 0
         },
         pic: {
             type: String,
             default:
                 "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg",
         },
-        appointments: [{
-            id: String,
-            doctor: String,
-            dateOfAppointment: Date,
-            timeOfAppointment: Number,
-        }]
     },
     {
         timestamps: true,
     }
 );
-
-doctorSchema.pre('save', async function (next) {
-    if (!this.isModified('password')) {
-        next();
-    }
-    const salt = await bcrypt.genSalt(10);
-    this.password = await bcrypt.hash(this.password, salt);
-})
-
-doctorSchema.methods.matchPassword = async function (enteredPass) {
-    return await bcrypt.compare(enteredPass, this.password);
-}
-
 
 const Doctor = mongoose.model('Doctor', doctorSchema)
 

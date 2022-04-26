@@ -1,3 +1,20 @@
+const fname = document.getElementById('first-name');
+const lname = document.getElementById('last-name');
+const patient_mobile = document.getElementById('patient-mobile');
+const patient_dob = document.getElementById('patient-dob');
+const age = document.getElementById('patient-age');
+const email = document.getElementById('patient-email');
+const gender = document.getElementById('patient-sex');
+const state = document.getElementById('patient-state');
+const city = document.getElementById('patient-city');
+const app_reason = document.getElementById('appointment-reason');
+
+
+const app_date = document.getElementById('appointment-date');
+const app_time = document.getElementById('appointment-time');
+
+const doctorid = window.location.href.split("=")[1];
+
 let fill_prev_btn = document.getElementById("fill-prev-btn");
 let sub_next_btn = document.getElementById("sub-next-btn");
 let patient_info = document.getElementById("patient-info");
@@ -11,7 +28,23 @@ const error_border = "2px solid red";
 
 fill_prev_btn.addEventListener("click", function (e) {
     if (!patient_info.classList.contains("hide") & doctor_info.classList.contains("hide")) {
-        alert("To Be Implemented")
+        fetch('/api/users/me')
+            .then(response => response.json())
+            .then(data => {
+                const name = data.name;
+                const mob = data.mobile;
+                const emailval = data.email;
+                const usergender = data.gender;
+                const firstname = name.split(" ")[0]
+                const lastname = name.split(" ")[1]
+                fname.value = firstname
+                lname.value = lastname
+                email.value = emailval
+                patient_mobile.value = mob
+                console.log(gender)
+                gender.innerText = usergender
+            });
+
     }
     else if (patient_info.classList.contains("hide")) {
         patient_info.classList.remove("hide")
@@ -46,10 +79,60 @@ fill_prev_btn.addEventListener("click", function (e) {
     }
 });
 
-sub_next_btn.addEventListener("click", function (e) {
+sub_next_btn.addEventListener("click", async function (e) {
     if (!patient_info.classList.contains("hide") & !doctor_info.classList.contains("hide")) {
         e.preventDefault()
-        window.location.replace('/payment')
+        obj = {
+            name: fname.value + ' ' + lname.value,
+            mobile: patient_mobile.value,
+            email: email.value,
+            gender: gender.innerText,
+            state: state.innerText,
+            city: city.innerText,
+            reason: app_reason.value,
+            dob: patient_dob.value,
+            age: age.value,
+            appointmentDate: app_date.value,
+            appointmentTime: app_time.value
+        }
+        console.log(obj)
+        const res = await fetch(`/api/bookappointment?id=${doctorid}`, {
+            method: "POST",
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(obj)
+        })
+        const data = await res.json();
+        if (data.status === 'ok') {
+            console.log(data);
+            // location.assign(`/payment?=${data._id}`);
+        }
+        else {
+            console.log('booking error!');
+        }
+
+        fetch('/api/create-checkout-session', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                items: [
+                    { id: 1, docId: window.location.search.slice(4) }
+                ],
+            }),
+        })
+            .then(res => {
+                if (res.ok) { return res.json() }
+                return res.json().then(json => Promise.reject(json))
+            })
+            .then(({ url }) => {
+                alert(url)
+                window.location = url
+            })
+            .catch(err => {
+                console.error(err.error)
+            })
+
     }
     else if (patient_info.classList.contains("hide") & !doctor_info.classList.contains("hide")) {
         if (document.getElementById("appointment-form-main").checkValidity()) {
