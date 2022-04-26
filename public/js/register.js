@@ -143,10 +143,3 @@ registerBtn.addEventListener('click', async (e) => {
         alert('invalid data!');
     }
 })
-
-
-
-
-
-
-

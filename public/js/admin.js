@@ -251,23 +251,22 @@ function doctorRemoveBackBtn() { // Now
 }
 
 
-
 // doctor list
-const doctorList = document.getElementById('doctor-list');
-const allDoctor = document.getElementById('all-doctors');
-allDoctor.addEventListener('click', () => {
-  backBtn.setAttribute('onclick', 'doctorListBackBtn()');
-  backBtn.classList.remove('hide');
-  doctorSectionHandlers.classList.add('hide');
-  doctorList.classList.remove('hide');
-})
-// const doctorListBackBtn = document.getElementById('doctor-list-back-btn');
-function doctorListBackBtn() { // Now
-  backBtn.removeAttribute('onclick');
-  backBtn.classList.add('hide');
-  doctorSectionHandlers.classList.remove('hide');
-  doctorList.classList.add('hide');
-}
+// const doctorList = document.getElementById('doctor-list');
+// const allDoctor = document.getElementById('all-doctors');
+// allDoctor.addEventListener('click', () => {
+//   backBtn.setAttribute('onclick', 'doctorListBackBtn()');
+//   backBtn.classList.remove('hide');
+//   doctorSectionHandlers.classList.add('hide');
+//   doctorList.classList.remove('hide');
+// })
+// // const doctorListBackBtn = document.getElementById('doctor-list-back-btn');
+// function doctorListBackBtn() { // Now
+//   backBtn.removeAttribute('onclick');
+//   backBtn.classList.add('hide');
+//   doctorSectionHandlers.classList.remove('hide');
+//   doctorList.classList.add('hide');
+// }
 
 
 
@@ -282,7 +281,7 @@ patientsNavBtn.addEventListener('click', () => {
   patientContainer.classList.remove('hide')
   removeDoctorContainer.classList.add('hide');
   approveDoctorsContainer.classList.add('hide');
-  doctorList.classList.add('hide');
+  // doctorList.classList.add('hide');
 })
 doctorNavBtn.addEventListener('click', () => {
   backBtn.classList.add('hide');
@@ -292,7 +291,7 @@ doctorNavBtn.addEventListener('click', () => {
   doctorSectionHandlers.classList.remove('hide');
   removeDoctorContainer.classList.add('hide');
   approveDoctorsContainer.classList.add('hide');
-  doctorList.classList.add('hide');
+  // doctorList.classList.add('hide');
 })
 
 fetch("/api/users/getusers")
@@ -307,7 +306,7 @@ fetch("/api/users/getusers")
         const state = card.querySelector('.user-state')
         const btn = card.querySelector('.user-delete-btn')
         const adminbtn = card.querySelector('.user-admin-btn')
-
+        appointments.textContent = patient.appointments
         if (patient.address) {
           const cityname = patient.address.split(',')[0]
           const statename = patient.address.split(',')[1]
@@ -318,7 +317,11 @@ fetch("/api/users/getusers")
         gender.textContent = patient.gender
 
         btn.setAttribute('onclick', `location.href = '/api/users/deleteUser?id=${patient._id}';`)
-        adminbtn.setAttribute('onclick', `location.href = '/api/users/makeadmin?id=${patient._id}'`)
+        if (patient.isAdmin === false) {
+          adminbtn.setAttribute('onclick', `location.href = '/api/users/makeadmin?id=${patient._id}'`)
+        } else {
+          adminbtn.setAttribute('style', 'display:none;')
+        }
         patientlistContainer.append(card);
         const avatar = card.querySelector(".avatar")
         avatar.setAttribute('onclick', `this.parentElement.parentElement.classList.toggle("active")`)

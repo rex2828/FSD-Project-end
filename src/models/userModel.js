@@ -80,7 +80,6 @@ userSchema.virtual('imgsrc').get(function () {
     }
 })
 
-
 userSchema.pre('save', async function (next) {
     const user = this
     if (user.isModified('password')) {
