@@ -205,7 +205,6 @@ const deleteUser = asyncHandler(async (req, res) => {
 
 const makeAdmin = asyncHandler(async (req, res) => {
     const userid = req.query.id;
-
     const user = await User.findByIdAndUpdate(userid, { isAdmin: true })
     res.status(200).redirect('/verified?m1=Given Admin Previledges&m2= ')
 })

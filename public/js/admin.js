@@ -1,13 +1,5 @@
 $(document).ready(function () { });
 
-
-document.querySelectorAll(".avatar").forEach(avatar => {
-  console.log(document.querySelectorAll(".avatar"))
-  avatar.addEventListener("click", function (e) {
-    avatar.parentElement.parentElement.classList.toggle("active");
-  });
-});
-
 let target, ink, d, x, y;
 $(".social").click(function (e) {
   target = $(this);
@@ -159,6 +151,36 @@ approveDoctorsBtn.addEventListener('click', async () => {
         exp.textContent = doctor.experience
         btn.setAttribute('onclick', `location.href = '/api/doctors/approve?id=${doctor._id}';`)
         unapprovedDoctorContainer.append(card);
+        const avatar = card.querySelector(".avatar")
+        avatar.setAttribute('onclick', `this.parentElement.parentElement.classList.toggle("active")`)
+        let target, ink, d, x, y;
+        $(".social").click(function (e) {
+          target = $(this);
+
+          if (target.find(".ink").length === 0) {
+            target.prepend('<span class="ink"></span>');
+          }
+
+          ink = target.find(".ink");
+
+          ink.removeClass("animate");
+
+          if (!ink.height() && !ink.width()) {
+            d = Math.max(target.outerWidth(), target.outerHeight());
+            ink.css({
+              height: d,
+              width: d
+            });
+          }
+
+          x = e.pageX - target.offset().left - ink.width() / 2;
+          y = e.pageY - target.offset().top - ink.height() / 2;
+
+          ink.css({
+            top: y + "px",
+            left: x + "px"
+          }).addClass("animate");
+        });
       });
     })
 })
@@ -215,6 +237,8 @@ removeDoctor.addEventListener('click', () => {
         exp.textContent = doctor.experience
         btn.setAttribute('onclick', `location.href = '/api/doctors/deleteDoctor?id=${doctor._id}';`)
         approvedDoctorContainer.append(card);
+        const avatar = card.querySelector(".avatar")
+        avatar.setAttribute('onclick', `this.parentElement.parentElement.classList.toggle("active")`)
       });
     })
 })
@@ -283,6 +307,7 @@ fetch("/api/users/getusers")
         const state = card.querySelector('.user-state')
         const btn = card.querySelector('.user-delete-btn')
         const adminbtn = card.querySelector('.user-admin-btn')
+
         if (patient.address) {
           const cityname = patient.address.split(',')[0]
           const statename = patient.address.split(',')[1]
@@ -295,5 +320,7 @@ fetch("/api/users/getusers")
         btn.setAttribute('onclick', `location.href = '/api/users/deleteUser?id=${patient._id}';`)
         adminbtn.setAttribute('onclick', `location.href = '/api/users/makeadmin?id=${patient._id}'`)
         patientlistContainer.append(card);
+        const avatar = card.querySelector(".avatar")
+        avatar.setAttribute('onclick', `this.parentElement.parentElement.classList.toggle("active")`)
       });
     })

@@ -22,7 +22,14 @@ const adminauth = async (req, res, next) => {
     if (req.user.isAdmin) {
         next()
     } else {
-        res.send('Nope!')
+        res.redirect('/verified?error=err&m1=404 Not Found&m2= ')
+    }
+}
+const doctorauth = async (req, res, next) => {
+    if (req.user.isDoctor) {
+        next()
+    } else {
+        res.send('/verified?error=err&m1=404 Not Found&m2= ')
     }
 }
 
@@ -46,4 +53,4 @@ const checkUser = (req, res, next) => {
 };
 
 
-module.exports = { auth, checkUser, adminauth };
+module.exports = { auth, checkUser, adminauth, doctorauth };

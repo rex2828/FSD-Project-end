@@ -6,7 +6,7 @@ const userRoutes = require('./routes/userRoutes');
 const doctorRoutes = require('./routes/doctorRoutes');
 const contactRoutes = require('./routes/apiRoutes');
 const Doctor = require('./models/doctorModel');
-const { auth, checkUser, adminauth } = require('./middleware/auth');
+const { auth, checkUser, adminauth, doctorauth } = require('./middleware/auth');
 const cookieParser = require('cookie-parser');
 
 const port = 3000;
@@ -47,7 +47,7 @@ app.get('/doctorapplication', auth, (req, res) => {
     res.render('doctorApplication')
 })
 
-app.get('/doctorpage', auth, async (req, res) => {
+app.get('/doctorpage', auth, doctorauth, async (req, res) => {
     const doctor = await Doctor.findOne({ _id: req.query.id });
 
     res.render('doctorpage', { doctor: doctor })

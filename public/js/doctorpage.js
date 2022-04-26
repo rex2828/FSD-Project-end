@@ -20,5 +20,7 @@ fetch('/api/doctors/doctorappointments').then(res => res.json())
             state.textContent = appointment.state
             btn.setAttribute('onclick', `location.href = '/api/deleteAppointment?id=${appointment._id}';`)
             appointmentContainer.append(card);
+            const avatar = card.querySelector(".avatar")
+            avatar.setAttribute('onclick', `this.parentElement.parentElement.classList.toggle("active")`)
         });
     })
