@@ -62,29 +62,26 @@ const deleteAppointment = asyncHandler(async (req, res) => {
 })
 
 const payment = async (req, res) => {
-    let docId = req.body.items[0].docId
+    let { docId } = req.body
     const doctor = await Doctor.findById({ _id: docId });
     try {
         const session = await stripe.checkout.sessions.create({
             payment_method_types: ['card'],
             mode: 'payment',
-            line_items: req.body.items.map(item => {
-                // const storeItem = storeItems.get(item.id)
-                return {
-                    price_data: {
-                        currency: 'inr',
-                        product_data: {
-                            name: req.user.name
-                        },
-                        unit_amount: doctor.fee * 100
+            line_items: [{
+                price_data: {
+                    currency: 'inr',
+                    product_data: {
+                        name: req.user.name
                     },
-                    quantity: 1
-                }
-            }),
+                    unit_amount: doctor.fee * 100
+                },
+                quantity: 1
+            }],
             success_url: `${process.env.SERVER_URL}/verified?m1=Payment Successful&m2= `,
             cancel_url: `${process.env.SERVER_URL}/verified?error=error&m1=Payment Failed&m2=Please try again`
         })
-        res.json({ url: session.url })
+        res.json({ status: 'success', url: session.url })
     } catch (err) {
         res.status(500).json({ error: err.message })
     }

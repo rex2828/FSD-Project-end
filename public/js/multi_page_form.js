@@ -95,7 +95,6 @@ sub_next_btn.addEventListener("click", async function (e) {
             appointmentDate: app_date.value,
             appointmentTime: app_time.value
         }
-        console.log(obj)
         const res = await fetch(`/api/bookappointment?id=${doctorid}`, {
             method: "POST",
             headers: { 'Content-Type': 'application/json' },
@@ -115,18 +114,15 @@ sub_next_btn.addEventListener("click", async function (e) {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
-                items: [
-                    { id: 1, docId: window.location.search.slice(4) }
-                ],
-            }),
+            body: JSON.stringify(
+                { id: 1, docId: window.location.search.slice(4) },
+            ),
         })
             .then(res => {
                 if (res.ok) { return res.json() }
                 return res.json().then(json => Promise.reject(json))
             })
-            .then(({ url }) => {
-                alert(url)
+            .then(({ status, url }) => {
                 window.location = url
             })
             .catch(err => {

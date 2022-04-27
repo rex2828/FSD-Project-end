@@ -10,6 +10,7 @@ const totalRecords = document.getElementById('total-records');
 let doctors = [];
 
 let fetchRes = fetch("/api/doctors/getdoctors");
+
 fetchRes.then(res =>
     res.json()).then(d => {
         let approvedDoctors = d.filter((doctor) => {

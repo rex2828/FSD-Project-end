@@ -1,4 +1,4 @@
-.doctorprofile-container{
+.doctorprofile-container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -14,6 +14,7 @@
     height: 50px;
     line-height: 50px;
 }
+
 .icon-box {
     font-size: 30px;
     margin-bottom: 33px;
@@ -26,10 +27,11 @@
     text-align: center;
     border-radius: 0.3rem;
 }
-.nav-link
-{
+
+.nav-link {
     font-size: large;
 }
+
 .social-icon-style2 li a {
     display: inline-block;
     font-size: 14px;
@@ -40,6 +42,7 @@
     line-height: 41px;
     width: 41px;
 }
+
 .rounded-3 {
     border-radius: 0.3rem !important;
 }
@@ -57,7 +60,9 @@
     margin-right: 5px;
 }
 
-a, a:active, a:focus {
+a,
+a:active,
+a:focus {
     color: #616161;
     text-decoration: none;
     transition-timing-function: ease-in-out;
@@ -72,14 +77,17 @@ a, a:active, a:focus {
     -o-transition-duration: .2s;
 }
 
-.text-secondary, .text-secondary-hover:hover {
+.text-secondary,
+.text-secondary-hover:hover {
     color: #59b73f !important;
 }
+
 .display-25 {
     font-size: 1.4rem;
 }
 
-.text-primary, .text-primary-hover:hover {
+.text-primary,
+.text-primary-hover:hover {
     color: #ff712a !important;
 }
 
@@ -87,64 +95,67 @@ p {
     margin: 0 0 20px;
 }
 
-.mb-1-6, .my-1-6 {
+.mb-1-6,
+.my-1-6 {
     margin-bottom: 1.6rem;
 }
 
 /* Uploading Pics */
-#file
-{
+#file {
     display: none;
 }
-.gutters-sm
-{
+
+.gutters-sm {
     margin-right: -8px;
     margin-left: -8px;
 }
 
-.gutters-sm>.col, .gutters-sm>[class*=col-]
-{
+.gutters-sm>.col,
+.gutters-sm>[class*=col-] {
     padding-right: 8px;
     padding-left: 8px;
 }
-.mb-3, .my-3
-{
-    margin-bottom: 1rem!important;
+
+.mb-3,
+.my-3 {
+    margin-bottom: 1rem !important;
 }
 
-.bg-gray-300
-{
+.bg-gray-300 {
     background-color: #e2e8f0;
 }
-.h-100
-{
-    height: 100%!important;
+
+.h-100 {
+    height: 100% !important;
 }
-.i
-{
+
+.i {
     font-style: normal;
 }
-.shadow-none
-{
-    box-shadow: none!important;
+
+.shadow-none {
+    box-shadow: none !important;
 }
-.nameAddress
-{
+
+.nameAddress {
     color: #ff721a;
 }
-h3{
+
+h3 {
     margin-left: 30px;
 }
-.description
-{
+
+.description {
     color: #ff721a;
     font-size: large;
 }
-.experience
-{
+
+.experience {
     font-size: medium;
+    height: 230px;
 }
-.education
-{
+
+.education {
     font-size: medium;
+    height: 230px;
 }

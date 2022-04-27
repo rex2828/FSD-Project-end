@@ -1,3 +1,7 @@
+if (document.cookie) {
+    location.assign('/')
+}
+
 const loginEmail = document.getElementById('login-email');
 const loginPassword = document.getElementById('login-password');
 const loginButton = document.getElementById('login-btn');
