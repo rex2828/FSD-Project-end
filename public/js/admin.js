@@ -153,34 +153,7 @@ approveDoctorsBtn.addEventListener('click', async () => {
         unapprovedDoctorContainer.append(card);
         const avatar = card.querySelector(".avatar")
         avatar.setAttribute('onclick', `this.parentElement.parentElement.classList.toggle("active")`)
-        let target, ink, d, x, y;
-        $(".social").click(function (e) {
-          target = $(this);
 
-          if (target.find(".ink").length === 0) {
-            target.prepend('<span class="ink"></span>');
-          }
-
-          ink = target.find(".ink");
-
-          ink.removeClass("animate");
-
-          if (!ink.height() && !ink.width()) {
-            d = Math.max(target.outerWidth(), target.outerHeight());
-            ink.css({
-              height: d,
-              width: d
-            });
-          }
-
-          x = e.pageX - target.offset().left - ink.width() / 2;
-          y = e.pageY - target.offset().top - ink.height() / 2;
-
-          ink.css({
-            top: y + "px",
-            left: x + "px"
-          }).addClass("animate");
-        });
       });
     })
 })
