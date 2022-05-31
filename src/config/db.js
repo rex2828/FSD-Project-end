@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-// mongodb+srv://sudeep:fsdproject@cluster0.hohd1.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
 
 const MONGO_URI = 'mongodb://localhost:27017/fsd';
 
