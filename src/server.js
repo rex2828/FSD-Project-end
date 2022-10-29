@@ -9,7 +9,7 @@ const Doctor = require('./models/doctorModel');
 const { auth, checkUser, adminauth, doctorauth } = require('./middleware/auth');
 const cookieParser = require('cookie-parser');
 
-const port = 3000;
+const port = 5000;
 const app = express();
 connectDB();
 app.use(express.json());
